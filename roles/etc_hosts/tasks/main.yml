@@ -1,0 +1,9 @@
+---
+- name: Add servers to /etc/hosts
+  lineinfile:
+    dest=/etc/hosts
+    state=present
+    regexp="{{ item }}"
+    line="{{ item }}"
+  with_items: hosts_entries
+

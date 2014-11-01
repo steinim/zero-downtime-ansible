@@ -1,0 +1,16 @@
+---
+- hosts: dbservers
+  roles:
+    - etc_hosts
+    - common
+
+- hosts: appservers
+  roles:
+    - etc_hosts
+    - common
+
+- hosts: proxies
+  roles:
+    - etc_hosts
+    - common
+
