@@ -1,4 +1,10 @@
-Tutorial slides will be available closer to the tutorial.
+Intro
+======
+This is the starting point for a tutorial which will be held at the Velocity Conference in Barcelona November 19th.
+
+[Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
+
+Tutorial slides will be available closer to the conference.
 
 Install Ansible
 =============
