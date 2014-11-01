@@ -1,5 +1,4 @@
 Tutorial slides will be available closer to the tutorial.
-==========================================================
 
 Install Ansible
 =============
