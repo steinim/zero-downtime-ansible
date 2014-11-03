@@ -1,8 +1,6 @@
 ---
 - name: Ensure installed nginx
-  apt: pkg=nginx
-       state=present
-       update_cache=no
+  apt: pkg=nginx state=present
   tags:
     - nginx
 
