@@ -1,0 +1,12 @@
+---
+- name: Ensure installed nginx
+  apt: pkg=nginx
+       state=present
+       update_cache=no
+  tags:
+    - nginx
+
+- name: Start nginx
+  service: name=nginx state=started
+  tags:
+    - nginx

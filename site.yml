@@ -1,4 +1,5 @@
 ---
+
 - hosts: dbservers
   roles:
     - etc_hosts
@@ -15,7 +16,10 @@
     - app
 
 - hosts: proxies
+  vars:
+    - app_port: "1234"
   roles:
     - etc_hosts
     - common
+    - nginx
 

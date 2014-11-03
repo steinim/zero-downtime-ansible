@@ -1,0 +1,22 @@
+---
+- name: Create config for nginx
+  template:
+    src=devops.conf.j2
+    dest=/etc/nginx/conf.d/devops.conf
+    owner=root
+    mode=0644
+  notify:
+    - Reload nginx
+  tags:
+    - nginx
+    - nginx_config
+
+- name: Remove default config
+  file:
+    path=/etc/nginx/conf.d/default.conf
+    state=absent
+  notify:
+    - Reload nginx
+  tags:
+    - nginx
+    - nginx_config

@@ -1,0 +1,15 @@
+upstream backend  {
+  {% for appserver in groups.appservers %}
+  server {{ appserver }}:{{ app_port }};
+  {% endfor %}
+}
+ 
+server {
+  listen 80;
+  server_name _;
+  access_log /var/log/nginx/devops-access.log;
+  location / {
+    proxy_pass  http://backend;
+  }
+
+}
