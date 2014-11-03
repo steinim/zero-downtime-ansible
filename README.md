@@ -49,7 +49,7 @@ Map the ip addresses of the VMs in your /etc/hosts
 
 Provision with Ansible
 =======================
-```ansible-playbook -i hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant site.yml```
+```ansible-playbook site.yml```
 
 Getting started
 ----------------
