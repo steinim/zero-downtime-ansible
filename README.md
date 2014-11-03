@@ -35,7 +35,13 @@ Install Vagrant
 ===============
 http://docs.vagrantup.com/v2/installation/
 
-Run: ```vagrant up```
+Install vagrant-cachier to speed up apt with a shared cache between boxes:
+
+```vagrant plugin install vagrant-cachier```
+
+Bring the boxes up:
+
+```vagrant up```
 
 Map the ip addresses of the VMs in your /etc/hosts
 ---------------------------------------------------
