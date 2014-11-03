@@ -6,4 +6,6 @@
     regexp="{{ item }}"
     line="{{ item }}"
   with_items: hosts_entries
+  tags:
+    - etc_hosts
 
