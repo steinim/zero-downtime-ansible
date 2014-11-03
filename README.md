@@ -43,12 +43,6 @@ Bring the boxes up:
 
 ```vagrant up```
 
-Install Java and Maven (Optional)
-======================
-http://www.oracle.com/technetwork/articles/javase/index-jsp-138363.html
-
-http://maven.apache.org/download.cgi
-
 Map the ip addresses of the VMs in your /etc/hosts
 ---------------------------------------------------
 ```ansible-playbook -i localhost --ask-sudo-pass localhost.yml```
@@ -56,6 +50,18 @@ Map the ip addresses of the VMs in your /etc/hosts
 Provision with Ansible
 =======================
 ```ansible-playbook site.yml```
+
+Install Java and Maven (Optional)
+======================
+http://www.oracle.com/technetwork/articles/javase/index-jsp-138363.html
+
+http://maven.apache.org/download.cgi
+
+Build the Java app
+------------------
+```cd helloworld-java-app```
+
+```mvn clean install```
 
 Getting started
 ----------------
