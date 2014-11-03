@@ -1,0 +1,38 @@
+---
+- name: Install Postgresql and dependencies
+  apt: pkg={{ item }}-{{ postgresql.version }} state=installed
+  with_items:
+    - python-psycopg2
+    - postgresql
+  tags:
+    - pg_install
+
+- name: Install postgresql.conf
+  copy: src=postgresql.conf
+        dest=/etc/postgresql/{{ postgresql.version }}/main/postgresql.conf
+        owner={{ postgresql.user }}
+        group={{ postgresql.group }}
+  notify:
+    - Restart postgresql
+  tags:
+    - pg_install
+
+- name: Install pg_hba.conf
+  template: src=pg_hba.conf.j2
+            dest=/etc/postgresql/{{ postgresql.version }}/main/pg_hba.conf
+            owner={{ postgresql.user }}
+            group={{ postgresql.group }}
+  notify:
+    - Restart postgresql
+  tags:
+    - pg_install
+
+- name: Create database
+  postgresql_db: name={{ db.name }}
+  sudo_user: postgres
+
+- name: Create db user
+  postgresql_user: db={{ db.name }} name={{ db.user }} password={{ db.password }}
+  sudo_user: postgres
+  tags:
+    - configure

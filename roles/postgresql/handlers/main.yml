@@ -1,0 +1,3 @@
+---
+- name: Restart postgresql
+  service: name=postgresql state=restarted

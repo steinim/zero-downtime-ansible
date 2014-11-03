@@ -3,6 +3,7 @@
   roles:
     - etc_hosts
     - common
+    - postgresql
 
 - hosts: appservers
   roles:

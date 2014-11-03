@@ -1,0 +1,9 @@
+---
+postgresql:
+  version: 9.3
+  repo: 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main'
+  user: postgres
+  group: postgres
+  data_dir: /var/lib/pgsql/data
+  address: 192.168.101.0/24
+
