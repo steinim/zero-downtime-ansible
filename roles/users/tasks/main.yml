@@ -1,0 +1,35 @@
+---
+- name: Create group
+  group: name={{ group }} state=present
+
+- name: Create user
+  user:
+    name={{ user }}
+    comment="{{ user_name }}"
+    group={{ group }}
+    createhome=yes
+    home=/home/{{ user }}
+    shell=/bin/bash
+    password={{ password }}
+    state=present
+
+- name: Ensure ssh directory exists for user
+  file:
+    dest=/home/{{ user }}/.ssh
+    owner={{ user }}
+    group={{ group }}
+    state=directory
+    mode=0700
+
+- name: Ensure public key is in authorized_keys
+  lineinfile:
+    dest=/home/{{ user }}/.ssh/authorized_keys
+    state=present
+    line="{{ lookup('file','~/.ssh/id_rsa.pub') }}"
+    insertafter=EOF
+    create=yes
+    owner={{ user }}
+    group={{ group }}
+    mode=600
+    regexp=stein.inge.morisbak@BEKK.no$
+
