@@ -40,7 +40,7 @@
 
 #- name: Download jar
 #  get_url:
-#    url="https://github.com/steinim/zero-downtime-ansible/files/devops.jar"
+#    url="http://morisbak.net/files/devops.jar"
 #    dest="/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
 #    owner={{ user }}
 #    group={{ group }}
