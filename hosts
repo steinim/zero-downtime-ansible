@@ -3,8 +3,12 @@
 db.local
 
 [appservers]
-app1.local http_port=1234
-app2.local http_port=1234
+app1.local
+app2.local
+
+[appservers:vars]
+http_port=1234
+dbserver=db.local
 
 [proxies]
 proxy.local
