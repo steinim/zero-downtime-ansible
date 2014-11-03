@@ -1,11 +1,6 @@
 ---
-- name: Update apt keys
-  command: apt-key update
-  tags:
-    - apt
-
 - name: Update apt cache
-  apt: update_cache=yes
+  apt: update_cache=yes cache_valid_time=5400
   tags:
     - apt
 
