@@ -17,7 +17,7 @@ Install Python setuptools: https://pypi.python.org/pypi/setuptools#installation-
 
 ```sudo pip install paramiko PyYAML jinja2 passlib```
 
-```sudo pip install ansible --quiet```
+```sudo pip install ansible```
 
 Then, if you're going to update ansible later, just do:
 
