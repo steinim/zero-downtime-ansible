@@ -12,6 +12,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Vagrant Cloud box
   config.vm.box = "hashicorp/precise64"
 
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
+
   config.vm.define :db do |db|
     db.vm.network :private_network, ip: "192.168.101.10"
     db.vm.network "forwarded_port", guest: 3306, host: 3306, auto_correct: true
