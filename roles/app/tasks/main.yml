@@ -1,0 +1,92 @@
+---
+- name: Install java
+  apt:
+    pkg=openjdk-7-jdk
+    state=present
+    update_cache=no
+  tags:
+    - java
+
+- name: Copy init script to server
+  copy:
+    src=init.sh
+    dest=/etc/init.d/devops
+    owner={{ user }}
+    group={{ group }}
+    mode=0755
+  notify:
+    - Restart devops
+  tags:
+    - deploy
+
+- name: Enable app service
+  service:
+    name=devops
+    enabled=yes
+  tags:
+    - deploy
+
+- name: Copy config.properties
+  template:
+    src=config.properties.j2
+    dest=/home/{{ user }}/config.properties
+    owner={{ user }}
+    group={{ group }}
+    mode=0640
+  notify:
+    - Restart devops
+  tags:
+    - deploy
+
+#- name: Download jar
+#  get_url:
+#    url="https://github.com/steinim/zero-downtime-ansible/files/devops.jar"
+#    dest="/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
+#    owner={{ user }}
+#    group={{ group }}
+#    mode=0644
+#  notify:
+#    - Restart devops
+#  tags:
+#    - deploy
+
+
+- name: Copy app jar
+  copy:
+    src=../../../helloworld-java-app/target/helloworld-java-app-1.0-SNAPSHOT-jar-with-dependencies.jar
+    dest=/home/{{ user }}/devops_{{ deploy_stamp }}.jar
+    owner={{ user }}
+    group={{ group }}
+    mode=0644
+  tags:
+    - deploy
+
+- stat: path="/home/{{ user }}/current"
+  register: current
+  tags:
+    - deploy
+
+- name: Link to previous app releases
+  shell: "ln -nsf $( readlink /home/{{ user }}/current ) /home/{{ user }}/previous"
+  when: current.stat.islink is defined and current.stat.islink == true
+  tags:
+    - deploy
+
+- name: Link to current app releases
+  file:
+    dest="/home/{{ user }}/current"
+    src="/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
+    owner={{ user }}
+    group={{ group }}
+    state=link
+    force=yes
+  notify:
+    - Restart devops
+  tags:
+    - deploy
+
+- name: Remove old deploys (keeping the two latest)
+  shell: "ls -tr /home/{{ user }}/devops_*.jar | head -n -2 | xargs rm -Rf"
+  tags:
+    - deploy
+

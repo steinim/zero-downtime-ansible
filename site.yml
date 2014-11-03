@@ -6,10 +6,12 @@
     - postgresql
 
 - hosts: appservers
+  serial: 1
   roles:
     - etc_hosts
     - common
     - users
+    - app
 
 - hosts: proxies
   roles:
