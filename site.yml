@@ -4,6 +4,7 @@
     - etc_hosts
     - common
     - postgresql
+    - db
 
 - hosts: appservers
   serial: 1

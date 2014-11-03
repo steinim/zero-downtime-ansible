@@ -1,10 +1,14 @@
 ---
+
 [dbservers]
 db.local
 
 [appservers]
 app1.local http_port=1234
 app2.local http_port=1234
+
+[appservers:vars]
+dbserver=db.local
 
 [proxies]
 proxy.local
