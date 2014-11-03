@@ -7,3 +7,9 @@ postgresql:
   data_dir: /var/lib/pgsql/data
   address: 192.168.101.0/24
 
+db:
+  name: devops
+  user: devops
+  schema: devops
+  password: devops123
+  table_name: MESSAGES
