@@ -1,15 +1,18 @@
 ---
 - hosts: dbservers
+  gather_facts: False
   roles:
     - etc_hosts
     - common
 
 - hosts: appservers
+  gather_facts: False
   roles:
     - etc_hosts
     - common
 
 - hosts: proxies
+  gather_facts: False
   roles:
     - etc_hosts
     - common
