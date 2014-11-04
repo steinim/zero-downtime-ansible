@@ -1,45 +1,53 @@
-#!/bin/sh
+#!/bin/bash
+# devops daemon
+# chkconfig: 345 20 80
+# description: devops daemon
+# processname: devops
 
-APP_HOME=/home/devops
+NAME=devops
+APP_HOME=/home/$NAME
 APP_JAR=current
 LOGS=$APP_HOME/logs
-
-USR=$( whoami )
-
-PID=$( ps -ea -o "pid ppid args" | grep -v grep | grep "java -jar $APP_JAR" | sed -e 's/^  *//' -e 's/ .*//' | head -1 )
+PIDFILE=$APP_HOME/$NAME.pid
 
 _start() {
+  printf "%-50s" "Starting $NAME..."
+  cd $APP_HOME
+  mkdir -p $LOGS
+  PID=`nohup java -jar $APP_JAR 1>$LOGS/stdout.log 2>$LOGS/stderr.log > /dev/null 2>&1 & echo $!`
   if [ -z $PID ]; then
-    echo "Starting devops..."
-    cd $APP_HOME
-    if [ "devops" = "$USR" ]; then
-      mkdir -p $LOGS ; nohup java -jar $APP_JAR 1>$LOGS/stdout.log 2>$LOGS/stderr.log &
-    else
-      sudo su -l devops -c "mkdir -p $LOGS ; nohup java -jar $APP_JAR 1>$LOGS/stdout.log 2>$LOGS/stderr.log &"
-    fi
-    cd -
-    echo "Started devops."
+      printf "%s\n" "Fail"
   else
-    echo "devops already running with PID: ${PID}"
+      echo $PID > $PIDFILE
+      printf "%s\n" "Ok"
   fi
 }
 
 _stop() {
-  echo "Stopping devops..."
-  if [ -z $PID ]; then
-    echo "devops already stopped"
+  printf "%-50s" "Stopping $NAME"
+  PID=`cat $PIDFILE`
+  cd $APP_HOME
+  if [ -f $PIDFILE ]; then
+    kill -HUP $PID
+    printf "%s\n" "Ok"
+    rm -f $PIDFILE
   else
-    if [ "devops" = "$USR" ]; then
-      kill $PID
-    else
-      sudo kill $PID
-    fi
-    unset PID
+    printf "%s\n" "pidfile not found"
   fi
 }
 
 _status() {
-  test $PID && echo "devops is running with PID: ${PID}" || echo "devops is not running"
+  printf "%-50s" "Checking $NAME..."
+  if [ -f $PIDFILE ]; then
+    PID=`cat $PIDFILE`
+    if [ -z "`ps axf | grep ${PID} | grep -v grep`" ]; then
+      printf "%s\n" "Process dead but pidfile exists"
+    else
+      echo "Running"
+    fi
+  else
+    printf "%s\n" "Service not running"
+  fi
 }
 
 case "$1" in
@@ -50,14 +58,13 @@ case "$1" in
     _stop
     ;;
   restart)
-    _stop
-    wait 3
-    _start
+    $0 stop
+    $0 start
     ;;
   status)
     _status
     ;;
   *)
-    echo "Usage: $0 {start|stop|restart}"
+    echo "Usage: $0 {status|start|stop|restart}"
     ;;
 esac
