@@ -1,6 +1,8 @@
 ---
 - name: Create group
   group: name={{ group }} state=present
+  tags:
+    - users
 
 - name: Create user
   user:
@@ -12,6 +14,8 @@
     shell=/bin/bash
     password={{ password }}
     state=present
+  tags:
+    - users
 
 - name: Ensure ssh directory exists for user
   file:
@@ -20,6 +24,8 @@
     group={{ group }}
     state=directory
     mode=0700
+  tags:
+    - users
 
 - name: Ensure public key is in authorized_keys
   lineinfile:
@@ -32,4 +38,6 @@
     group={{ group }}
     mode=600
     regexp=stein.inge.morisbak@BEKK.no$
+  tags:
+    - users
 
