@@ -1,35 +1,35 @@
 ---
 - name: Create group
-  group: name={{ group }} state=present
+  group: name=<insert group variable here> state=present
 
 - name: Create user
   user:
-    name={{ user }}
-    comment="{{ user_name }}"
-    group={{ group }}
+    name=<insert user variable here>
+    comment="<insert user_name variable here>"
+    group=<insert group variable here>
     createhome=yes
-    home=/home/{{ user }}
+    home=/home/<insert user variable here>
     shell=/bin/bash
-    password={{ password }}
+    password=<insert password variable here>
     state=present
 
 - name: Ensure ssh directory exists for user
   file:
-    dest=/home/{{ user }}/.ssh
-    owner={{ user }}
-    group={{ group }}
+    dest=/home/<insert user variable here>/.ssh
+    owner=<insert user variable here>
+    group=<insert group variable here>
     state=directory
     mode=0700
 
 - name: Ensure public key is in authorized_keys
   lineinfile:
-    dest=/home/{{ user }}/.ssh/authorized_keys
+    dest=/home/<insert user variable here>/.ssh/authorized_keys
     state=present
     line="{{ lookup('file','~/.ssh/id_rsa.pub') }}"
     insertafter=EOF
     create=yes
-    owner={{ user }}
-    group={{ group }}
+    owner=<insert user variable here>
+    group=<insert group variable here>
     mode=600
-    regexp=stein.inge.morisbak@BEKK.no$
+    regexp=stein.inge.morisbak@BEKK.no$ # substitute with the end of your personal public key>
 

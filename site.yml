@@ -8,7 +8,7 @@
   roles:
     - etc_hosts
     - common
-    - users
+    - <insert role here>
 
 - hosts: proxies
   roles:
