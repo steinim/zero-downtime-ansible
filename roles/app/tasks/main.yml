@@ -85,6 +85,13 @@
   tags:
     - deploy
 
+- name: Wait until app is available
+  shell: curl --head --silent http://localhost:{{ http_port }}
+  register: result
+  until: result.stdout.find("200 OK") != -1
+  retries: 12
+  delay: 5
+
 - name: Remove old deploys (keeping the two latest)
   shell: "ls -tr /home/{{ user }}/devops_*.jar | head -n -2 | xargs rm -Rf"
   tags:
