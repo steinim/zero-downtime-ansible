@@ -6,8 +6,5 @@ db.local
 app1.local
 app2.local
 
-[appservers:vars]
-dbserver=db.local
-
 [proxies]
 proxy.local
