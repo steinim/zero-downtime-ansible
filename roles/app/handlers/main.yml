@@ -1,5 +1,0 @@
----
-- name: Restart devops
-  service:
-    name=devops
-    state=restarted
