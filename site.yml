@@ -1,6 +1,7 @@
 ---
 
 - hosts: dbservers
+  gather_facts: False
   roles:
     - etc_hosts
     - common
@@ -16,10 +17,12 @@
     - app
 
 - hosts: dbservers
+  gather_facts: False
   roles:
     - post_db
 
 - hosts: proxies
+  gather_facts: False
   vars:
     - app_port: "1234"
   roles:
