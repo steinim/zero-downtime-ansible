@@ -2,9 +2,8 @@ Intro
 ======
 This is the starting point for a tutorial which will be held at the [Velocity Conference in Barcelona November 19th](http://velocityconf.com/velocityeu2014).
 
-[Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
-
-[Tutorial slides](http://steinim.github.io/slides/zero-downtime-ansible)
+* [Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
+* [Tutorial slides](http://steinim.github.io/slides/zero-downtime-ansible)
 
 Install Ansible
 =============
@@ -12,6 +11,8 @@ Install Ansible
 Mac:
 ----
 Install Python setuptools: https://pypi.python.org/pypi/setuptools#installation-instructions
+
+If you prefer not to install packages to your global `site-packages` you can install and use virtualenv: http://virtualenv.readthedocs.org/en/latest/
 
 ```sudo easy_install pip```
 
@@ -39,9 +40,13 @@ Install vagrant-cachier to speed up apt with a shared cache between boxes:
 
 ```vagrant plugin install vagrant-cachier```
 
-Bring the boxes up:
+Clone this repo, and start the virtual machines:
 
-```vagrant up```
+```
+git clone https://github.com/steinim/zero-downtime-ansible.git
+cd zero-downtime-ansible
+vagrant up
+```
 
 Map the ip addresses of the VMs in your /etc/hosts
 ---------------------------------------------------
