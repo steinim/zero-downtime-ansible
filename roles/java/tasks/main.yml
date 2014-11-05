@@ -1,0 +1,7 @@
+- name: Install java
+  apt:
+    pkg=openjdk-7-jdk
+    state=present
+    update_cache=no
+  tags:
+    - java
