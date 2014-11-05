@@ -15,9 +15,9 @@ PIDFILE=$APP_HOME/$NAME.pid
 _start() {
   printf "%-50s" "Starting $NAME..."
   cd $APP_HOME
-  mkdir $LOGS
-  touch $LOGS/stdout.log
-  touch $LOGS/stderr.log
+  if [ ! -d "$LOGS" ]; then
+    mkdir $LOGS
+  fi
   PID=`nohup java -jar $APP_JAR 1>$STDOUT 2>$STDERR & echo $!`
   if [ -z $PID ]; then
     printf "%s\n" "Fail"
