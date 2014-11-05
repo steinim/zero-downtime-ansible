@@ -1,10 +1,10 @@
 Intro
 ======
-This is the starting point for a tutorial which will be held at the Velocity Conference in Barcelona November 19th.
+This is the starting point for a tutorial which will be held at the [Velocity Conference in Barcelona November 19th](http://velocityconf.com/velocityeu2014).
 
 [Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
 
-Tutorial slides will be available closer to the conference.
+[Tutorial slides](http://steinim.github.io/slides/zero-downtime-ansible)
 
 Install Ansible
 =============
