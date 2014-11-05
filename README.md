@@ -13,6 +13,8 @@ Mac:
 ----
 Install Python setuptools: https://pypi.python.org/pypi/setuptools#installation-instructions
 
+If you prefer not to install packages to your global `site-packages` you can install and use virtualenv: http://virtualenv.readthedocs.org/en/latest/
+
 ```sudo easy_install pip```
 
 ```sudo pip install paramiko PyYAML jinja2 passlib```
