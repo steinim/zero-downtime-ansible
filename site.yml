@@ -13,6 +13,7 @@
   roles:
     - etc_hosts
     - common
+    - java
     - users
     - app
 
