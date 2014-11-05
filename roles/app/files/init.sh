@@ -32,7 +32,7 @@ _stop() {
   PID=`cat $PIDFILE`
   cd $APP_HOME
   if [ -f $PIDFILE ]; then
-    kill -HUP $PID
+    kill -9 $PID
     printf "%s\n" "Ok"
     rm -f $PIDFILE
   else
