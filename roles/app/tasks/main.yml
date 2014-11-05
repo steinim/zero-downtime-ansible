@@ -1,16 +1,11 @@
 ---
-- name: Install java and curl
+- name: Install java
   apt:
-    pkg={{ item }}
+    pkg=openjdk-7-jdk
     state=present
     update_cache=no
-  with_items:
-    - openjdk-7-jdk
-    - curl
   tags:
     - java
-    - curl
-    - deploy
 
 - name: Copy config.properties
   template:
@@ -81,13 +76,11 @@
     - deploy
 
 - name: Wait until app is available
-  shell: curl --head --silent http://localhost:{{ http_port }}
-  register: result
-  until: result.stdout.find("200 OK") != -1
-  retries: 12
-  delay: 2
+  local_action: wait_for port={{ http_port }} host={{ inventory_hostname }} delay=5
+  sudo: False
   tags:
     - deploy
+    - status
 
 - name: Remove old deploys (keeping the two latest)
   shell: "ls -tr /home/{{ user }}/devops_*.jar | head -n -2 | xargs rm -Rf"
