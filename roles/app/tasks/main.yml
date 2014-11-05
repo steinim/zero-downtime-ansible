@@ -68,7 +68,8 @@
   service:
     name=devops
     enabled=yes
-    state=started
+    state=restarted
+    sleep=3
   remote_user: devops
   sudo: False
   tags:

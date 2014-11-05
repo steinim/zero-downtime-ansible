@@ -8,12 +8,17 @@ NAME=devops
 APP_HOME=/home/$NAME
 APP_JAR=current
 LOGS=$APP_HOME/logs
+STDOUT=$APP_HOME/logs/stdout.log
+STDERR=$APP_HOME/logs/stderr.log
 PIDFILE=$APP_HOME/$NAME.pid
 
 _start() {
   printf "%-50s" "Starting $NAME..."
   cd $APP_HOME
-  PID=`nohup java -jar $APP_JAR 1>$LOGS/stdout.log 2>$LOGS/stderr.log & echo $!`
+  mkdir $LOGS
+  touch $LOGS/stdout.log
+  touch $LOGS/stderr.log
+  PID=`nohup java -jar $APP_JAR 1>$STDOUT 2>$STDERR & echo $!`
   if [ -z $PID ]; then
     printf "%s\n" "Fail"
   else
