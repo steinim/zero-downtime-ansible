@@ -10,6 +10,7 @@
   roles:
     - etc_hosts
     - common
+    - java
     - users
 
 - hosts: proxies
