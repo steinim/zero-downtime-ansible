@@ -39,9 +39,13 @@ Install vagrant-cachier to speed up apt with a shared cache between boxes:
 
 ```vagrant plugin install vagrant-cachier```
 
-Bring the boxes up:
+Clone this repo, and start the virtual machines:
 
-```vagrant up```
+```
+git clone https://github.com/steinim/zero-downtime-ansible.git
+cd zero-downtime-ansible
+vagrant up
+```
 
 Map the ip addresses of the VMs in your /etc/hosts
 ---------------------------------------------------
