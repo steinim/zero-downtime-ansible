@@ -38,14 +38,8 @@
   tags:
     - deploy
 
-- stat: path="/home/{{ user }}/current"
-  register: current
-  tags:
-    - deploy
-
 - name: Link to previous app releases
   shell: "ln -nsf $( readlink /home/{{ user }}/current ) /home/{{ user }}/previous"
-  when: current.stat.islink is defined and current.stat.islink == true
   tags:
     - deploy
 
@@ -74,7 +68,8 @@
   service:
     name=devops
     enabled=yes
-    state=restarted
+    state=started
+  remote_user: devops
   sudo: False
   tags:
     - deploy
