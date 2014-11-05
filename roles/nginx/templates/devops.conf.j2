@@ -1,6 +1,6 @@
 upstream backend  {
   {% for appserver in groups.appservers %}
-  server {{ appserver }}:{{ app_port }};
+  server {{ appserver }}:{{ app_port }} fail_timeout=1s;
   {% endfor %}
 }
  
@@ -10,6 +10,9 @@ server {
   access_log /var/log/nginx/devops-access.log;
   location / {
     proxy_pass  http://backend;
+    proxy_redirect          off;
+    proxy_next_upstream     error timeout invalid_header http_500 http_502;
+    proxy_connect_timeout   2;
   }
 
 }
