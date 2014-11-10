@@ -37,10 +37,10 @@ public class WebServerMain {
 		context.addServlet(h, "/*");
 		try {
 			server.start();
-			LOG.info("Server startet på port " + SERVER_PORT);
+			LOG.info("Server started on port " + SERVER_PORT);
 			server.join();
 		} catch (Exception e) {
-			LOG.error("Kunne ikke starte server!", e);
+			LOG.error("Could not start server!", e);
 		}
 	}
 
