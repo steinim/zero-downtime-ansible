@@ -5,6 +5,7 @@ db:
   schema: devops
   password: devops123
   table_name: MESSAGES
+  rollback_table_name: HELLO
 
 hosts_entries:
   [ "192.168.101.10 db.local db",

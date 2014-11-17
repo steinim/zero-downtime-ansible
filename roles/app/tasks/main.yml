@@ -7,7 +7,17 @@
     group={{ group }}
     mode=0640
   tags:
-    - deploy
+   - deploy
+
+- name: Roll back config.properties
+  template:
+    src=rollback.properties.j2
+    dest=/home/{{ user }}/config.properties
+    owner={{ user }}
+    group={{ group }}
+    mode=0640
+  tags:
+   - rollback
 
 #- name: Download jar
 #  get_url:
@@ -30,12 +40,12 @@
   tags:
     - deploy
 
-- name: Link to previous app releases
+- name: Link to previous app release
   shell: "ln -nsf $( readlink /home/{{ user }}/current ) /home/{{ user }}/previous"
   tags:
     - deploy
 
-- name: Link to current app releases
+- name: Link to current app release
   file:
     dest="/home/{{ user }}/current"
     src="/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
@@ -45,6 +55,11 @@
     force=yes
   tags:
     - deploy
+
+- name: Roll back to previous app release
+  shell: "ln -nsf $( readlink /home/{{ user }}/previous ) /home/{{ user }}/current && rm previous"
+  tags:
+    - rollback
 
 - name: Copy init script to server
   copy:
@@ -66,6 +81,7 @@
   sudo: False
   tags:
     - deploy
+    - rollback
 
 - name: Wait until app is available
   local_action: wait_for port={{ http_port }} host={{ inventory_hostname }} delay=5
@@ -73,6 +89,7 @@
   tags:
     - deploy
     - status
+    - rollback
 
 - name: Remove old deploys (keeping the two latest)
   shell: "ls -tr /home/{{ user }}/devops_*.jar | head -n -2 | xargs rm -Rf"
