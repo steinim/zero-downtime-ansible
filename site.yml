@@ -2,14 +2,12 @@
 - hosts: dbservers
   gather_facts: False
   roles:
-    - etc_hosts
     - common
     - postgresql
 
 - hosts: appservers
   serial: 1
   roles:
-    - etc_hosts
     - common
     - java
     - users
@@ -18,6 +16,5 @@
 - hosts: proxies
   gather_facts: False
   roles:
-    - etc_hosts
     - common
 
