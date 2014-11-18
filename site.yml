@@ -3,7 +3,6 @@
 - hosts: dbservers
   gather_facts: False
   roles:
-    - etc_hosts
     - common
     - postgresql
     - db
@@ -11,7 +10,6 @@
 - hosts: appservers
   serial: 1
   roles:
-    - etc_hosts
     - common
     - java
     - users
@@ -22,7 +20,6 @@
   vars:
     - app_port: "1234"
   roles:
-    - etc_hosts
     - common
     - nginx
 
