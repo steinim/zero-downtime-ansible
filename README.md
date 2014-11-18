@@ -1,10 +1,9 @@
 Intro
 ======
-This is the starting point for a tutorial which will be held at the Velocity Conference in Barcelona November 19th.
+This is the starting point for a tutorial which will be held at the [Velocity Conference in Barcelona November 19th](http://velocityconf.com/velocityeu2014).
 
-[Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
-
-Tutorial slides will be available closer to the conference.
+* [Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
+* [Tutorial slides](http://steinim.github.io/slides/zero-downtime-ansible)
 
 Install Ansible
 =============
@@ -12,6 +11,8 @@ Install Ansible
 Mac:
 ----
 Install Python setuptools: https://pypi.python.org/pypi/setuptools#installation-instructions
+
+If you prefer not to install packages to your global `site-packages` you can install and use virtualenv: http://virtualenv.readthedocs.org/en/latest/
 
 ```sudo easy_install pip```
 
@@ -35,17 +36,21 @@ Install Vagrant
 ===============
 http://docs.vagrantup.com/v2/installation/
 
-Install vagrant-cachier to speed up apt with a shared cache between boxes:
+Install [vagrant-cachier plugin](https://github.com/fgrehm/vagrant-cachier) to speed up apt with a shared cache between boxes:
 
 ```vagrant plugin install vagrant-cachier```
 
-Bring the boxes up:
+Install [vagrant-hostmanager plugin](https://github.com/smdahlen/vagrant-hostmanager) to manage the /etc/hosts file on guest machines and the host:
 
-```vagrant up```
+```vagrant plugin install vagrant-hostmanager```
 
-Map the ip addresses of the VMs in your /etc/hosts
----------------------------------------------------
-```ansible-playbook -i localhost --ask-sudo-pass localhost.yml```
+Clone this repo, and start the virtual machines:
+
+```
+git clone https://github.com/steinim/zero-downtime-ansible.git
+cd zero-downtime-ansible
+vagrant up
+```
 
 Provision with Ansible
 =======================
