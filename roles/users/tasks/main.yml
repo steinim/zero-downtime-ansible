@@ -12,7 +12,6 @@
     createhome=yes
     home=/home/<insert user variable here>
     shell=/bin/bash
-    password=<insert password variable here>
     state=present
   tags:
     - users
