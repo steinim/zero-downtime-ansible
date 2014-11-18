@@ -57,7 +57,7 @@
     - deploy
 
 - name: Roll back to previous app release
-  shell: "ln -nsf $( readlink /home/{{ user }}/previous ) /home/{{ user }}/current && rm previous"
+  shell: "ln -nsf $( readlink /home/{{ user }}/previous ) /home/{{ user }}/current"
   tags:
     - rollback
 
