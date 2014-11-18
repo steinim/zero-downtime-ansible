@@ -36,9 +36,13 @@ Install Vagrant
 ===============
 http://docs.vagrantup.com/v2/installation/
 
-Install vagrant-cachier to speed up apt with a shared cache between boxes:
+Install [vagrant-cachier plugin](https://github.com/fgrehm/vagrant-cachier) to speed up apt with a shared cache between boxes:
 
 ```vagrant plugin install vagrant-cachier```
+
+Install [vagrant-hostmanager plugin](https://github.com/smdahlen/vagrant-hostmanager) to manage the /etc/hosts file on guest machines and the host:
+
+```vagrant plugin install vagrant-hostmanager```
 
 Clone this repo, and start the virtual machines:
 
@@ -47,10 +51,6 @@ git clone https://github.com/steinim/zero-downtime-ansible.git
 cd zero-downtime-ansible
 vagrant up
 ```
-
-Map the ip addresses of the VMs in your /etc/hosts
----------------------------------------------------
-```ansible-playbook -i localhost --ask-sudo-pass localhost.yml```
 
 Provision with Ansible
 =======================
