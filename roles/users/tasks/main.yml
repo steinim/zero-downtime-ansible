@@ -12,7 +12,6 @@
     createhome=yes
     home=/home/{{ user }}
     shell=/bin/bash
-    password={{ password }}
     state=present
   tags:
     - users
