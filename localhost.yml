@@ -1,9 +1,0 @@
----
-# Run me like this: ansible-playbook -i localhost localhost.yml --ask-sudo-pass
-- hosts: localhost
-  gather_facts: False
-  connection: local
-  sudo: True
-  roles:
-    - etc_hosts
-
