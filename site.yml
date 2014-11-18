@@ -1,17 +1,14 @@
 ---
 - hosts: dbservers
   roles:
-    - etc_hosts
     - common
 
 - hosts: appservers
   roles:
-    - etc_hosts
     - common
     - java
 
 - hosts: proxies
   roles:
-    - etc_hosts
     - common
 
