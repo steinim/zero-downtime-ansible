@@ -1,6 +1,6 @@
 ---
 postgresql:
-  version: 9.3
+  version: 9.4
   repo: 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main'
   user: postgres
   group: postgres
