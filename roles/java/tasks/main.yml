@@ -1,6 +1,11 @@
+- name: Add Ubuntu OpenJDK repo (for additional Java versions)
+  apt_repository: repo='ppa:openjdk-r/ppa' state=present
+  tags:
+    - java
+
 - name: Install java jre
   apt:
-    pkg=openjdk-7-jre
+    pkg=openjdk-8-jre
     state=present
     update_cache=no
   tags:
