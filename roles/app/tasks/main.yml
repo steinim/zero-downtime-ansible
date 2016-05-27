@@ -33,11 +33,11 @@
 - name: get previous app release version
   command: readlink /home/{{ user }}/current
   register: previous_deploy_stamp
+  ignore_errors: yes
   tags:
     - deploy
 
 - name: Link to previous app releases
-#  shell: "ln -nsf $( readlink /home/{{ user }}/current ) /home/{{ user }}/previous"
   file:
     dest="/home/{{ user }}/previous"
     src="{{ previous_deploy_stamp.stdout }}"
@@ -45,6 +45,7 @@
     group={{ group }}
     state=link
     force=yes
+  when: previous_deploy_stamp.rc == 0
   tags:
     - deploy
 
