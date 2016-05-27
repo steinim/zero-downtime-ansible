@@ -2,8 +2,14 @@ Intro
 ======
 This is the starting point for a tutorial held at the [Velocity Conference in Barcelona November 19th](http://velocityconf.com/velocityeu2014).
 
-* [Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
-* [Tutorial slides](http://steinim.github.io/slides/zero-downtime-ansible)
+* [Velocity Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
+* [Velocity Tutorial slides](http://steinim.github.io/slides/zero-downtime-ansible)
+
+I also did a talk on the same subject at [DevOpsCon Berlin 2016](http://devopsconference.de/).
+
+* [DevOpsCon Abstract](http://devopsconference.de/session/zero-downtime-deployment-with-ansible/)
+* [DevOpsCon Tutorial slides](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/)
+
 
 Install Ansible
 =============
