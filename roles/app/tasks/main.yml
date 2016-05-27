@@ -30,8 +30,21 @@
   tags:
     - deploy
 
+- name: get previous app release version
+  command: readlink /home/{{ user }}/current
+  register: previous_deploy_stamp
+  tags:
+    - deploy
+
 - name: Link to previous app releases
-  shell: "ln -nsf $( readlink /home/{{ user }}/current ) /home/{{ user }}/previous"
+#  shell: "ln -nsf $( readlink /home/{{ user }}/current ) /home/{{ user }}/previous"
+  file:
+    dest="/home/{{ user }}/previous"
+    src="{{ previous_deploy_stamp.stdout }}"
+    owner={{ user }}
+    group={{ group }}
+    state=link
+    force=yes
   tags:
     - deploy
 
@@ -62,8 +75,6 @@
     enabled=yes
     state=restarted
     sleep=3
-  remote_user: devops
-  sudo: False
   tags:
     - deploy
 
