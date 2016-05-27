@@ -10,8 +10,5 @@ app2.local
 http_port=1234
 dbserver=db.local
 
-[appservers:vars]
-dbserver=db.local
-
 [proxies]
 proxy.local

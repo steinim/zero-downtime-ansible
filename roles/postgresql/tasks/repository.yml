@@ -1,7 +1,7 @@
 ---
 # Needed for add-apt-repository
 - name: Install python-software-properties
-  apt: pkg=python-software-properties state=installed update-cache=yes
+  apt: pkg=python-software-properties state=installed
   tags:
     - pg_install
 
