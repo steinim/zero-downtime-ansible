@@ -12,6 +12,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Vagrant Cloud box
   config.vm.box = "hashicorp/precise64"
 
+  config.ssh.insert_key = false
+
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
   end
