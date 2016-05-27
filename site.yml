@@ -8,7 +8,7 @@
     - db
 
 - hosts: appservers
-  gather_facts: False
+  gather_facts: True
   serial: 1
   roles:
     - common

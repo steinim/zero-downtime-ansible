@@ -1,8 +1,13 @@
 #!/bin/bash
-# devops daemon
-# chkconfig: 345 20 80
-# description: devops daemon
-# processname: devops
+### BEGIN INIT INFO
+# Provides:          devops
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start devops app at boot time
+# Description:       Enable service provided by devops daemon.
+### END INIT INFO
 
 NAME=devops
 APP_HOME=/home/$NAME

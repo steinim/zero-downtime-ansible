@@ -6,7 +6,7 @@
     - pg_install
 
 - name: Add repository key
-  apt_key: data="{{ lookup('file', 'ACCC4CF8.asc') }}" state=present
+  apt_key: data="{{ lookup('file', 'ACCC4CF8.asc') }}"
   tags:
     - pg_install
 
