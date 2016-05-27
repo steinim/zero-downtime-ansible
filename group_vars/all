@@ -5,4 +5,8 @@ db:
   schema: devops
   password: devops123
   table_name: HELLO
-
+hosts_entries:
+  [ "192.168.101.10 db.local db",
+    "192.168.101.11 app1.local app1",
+    "192.168.101.12 app2.local app2",
+    "192.168.101.13 proxy.local proxy" ]
