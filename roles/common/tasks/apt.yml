@@ -6,16 +6,16 @@
 
 - name: Ensure installed vim
   apt:
-    pkg=vim
-    state=present
+    pkg=<what do you want to install>
+    state=<should it be present or absent>
     update_cache=no
   tags:
     - vim
 
-- name: Set filetype indent off
+- name: Set 'filetype indent off' in /etc/vim/vimrc
   lineinfile:
-    dest=/etc/vim/vimrc
-    line='filetype indent off'
-    state=present
+    dest=<which file do you want to insert the line into>
+    line='<what do you want to insert into the file>'
+    state=<should it be present or absent>
   tags:
     - vim
