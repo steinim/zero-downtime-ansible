@@ -4,3 +4,18 @@
   tags:
     - apt
 
+- name: Ensure installed vim
+  apt:
+    pkg=vim
+    state=present
+    update_cache=no
+  tags:
+    - vim
+
+- name: Set filetype indent off
+  lineinfile:
+    dest=/etc/vim/vimrc
+    line='filetype indent off'
+    state=present
+  tags:
+    - vim

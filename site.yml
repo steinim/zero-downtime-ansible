@@ -8,17 +8,13 @@
     - db
 
 - hosts: appservers
+  gather_facts: False
   serial: 1
   roles:
     - common
     - java
     - users
     - app
-
-- hosts: dbservers
-  gather_facts: False
-  roles:
-    - post_db
 
 - hosts: proxies
   gather_facts: False
