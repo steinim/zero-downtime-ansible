@@ -81,7 +81,7 @@
 
 - name: Wait until app is available
   local_action: wait_for port={{ http_port }} host={{ inventory_hostname }} delay=5
-  sudo: False
+  become: False
   tags:
     - deploy
     - status
