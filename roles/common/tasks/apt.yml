@@ -12,7 +12,7 @@
   tags:
     - vim
 
-- name: Set 'filetype indent off' in /etc/vim/vimrc
+- name: Set filetype indent off
   lineinfile:
     dest=/etc/vim/vimrc
     line='filetype indent off'
