@@ -8,7 +8,8 @@ This is the starting point for a tutorial held at the [Velocity Conference in Ba
 I also did a talk on the same subject at [DevOpsCon Berlin 2016](http://devopsconference.de/).
 
 * [DevOpsCon Abstract](http://devopsconference.de/session/zero-downtime-deployment-with-ansible/)
-* [DevOpsCon Tutorial slides](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/)
+* [DevOpsCon slides](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/)
+* [DevOpsCon full tutorial](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/tutorial.html)
 
 
 Install Ansible
