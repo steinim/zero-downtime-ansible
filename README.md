@@ -1,16 +1,8 @@
-Intro
-======
-This is the starting point for a tutorial held at the [Velocity Conference in Barcelona 2014](http://conferences.oreilly.com/velocity/velocityeu2014/).
+# Intro
 
-* [Velocity Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
-* [Velocity Tutorial slides](http://steinim.github.io/slides/zero-downtime-ansible)
+This is the starting point for the tutorial "Zero Downtime Deployment with Ansible" where you will learn how to provision Linux servers with a web-proxy, a database and automate zero downtime deployment of a Java application to a load balanced environment.
 
-I also did a talk on the same subject at [DevOpsCon Berlin 2016](http://devopsconference.de/).
-
-* [DevOpsCon Abstract](http://devopsconference.de/session/zero-downtime-deployment-with-ansible/)
-* [DevOpsCon slides](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/)
-* [DevOpsCon full tutorial](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/tutorial.html)
-
+# Requirements
 
 Install Ansible
 =============
@@ -83,3 +75,15 @@ Ansible Modules
 ----------------
 http://www.ansibleworks.com/docs/modules.html
 
+# About
+
+The first time I a held the tutorial was at the [Velocity Conference in Barcelona 2014](http://conferences.oreilly.com/velocity/velocityeu2014/).
+
+* [Velocity Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
+* [Velocity Tutorial slides](http://steinim.github.io/slides/zero-downtime-ansible)
+
+I also did a talk on the same subject at [DevOpsCon Berlin 2016](http://devopsconference.de/).
+
+* [DevOpsCon Abstract](http://devopsconference.de/session/zero-downtime-deployment-with-ansible/)
+* [DevOpsCon slides](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/)
+* [DevOpsCon full tutorial](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/tutorial.html)
