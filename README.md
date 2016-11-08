@@ -2,13 +2,12 @@
 
 This is the starting point for the tutorial "Zero Downtime Deployment with Ansible" where you will learn how to provision Linux servers with a web-proxy, a database and automate zero downtime deployment of a Java application to a load balanced environment.
 
-# Requirements
+## Requirements
 
-Install Ansible
-=============
+### Install Ansible
 
-Mac:
-----
+#### Mac:
+
 Install Python setuptools: https://pypi.python.org/pypi/setuptools#installation-instructions
 
 If you prefer not to install packages to your global `site-packages` you can install and use virtualenv: http://virtualenv.readthedocs.org/en/latest/
@@ -23,16 +22,16 @@ Then, if you're going to update ansible later, just do:
 
 ```sudo pip install ansible --upgrade```
 
-Other:
-------
+#### Other:
+
 http://www.ansibleworks.com/docs/intro_installation.html
 
-Install VirtualBox and Extension Pack
-======================================
+### Install VirtualBox and Extension Pack
+
 https://www.virtualbox.org/wiki/Downloads
 
-Install Vagrant
-===============
+### Install Vagrant
+
 http://docs.vagrantup.com/v2/installation/
 
 Install [vagrant-cachier plugin](https://github.com/fgrehm/vagrant-cachier) to speed up apt with a shared cache between boxes:
@@ -51,28 +50,28 @@ cd zero-downtime-ansible
 vagrant up
 ```
 
-Provision with Ansible
-=======================
+### Provision with Ansible
+
 ```ansible-playbook site.yml```
 
-Install Java and Maven (Optional)
-======================
+### Install Java and Maven (Optional)
+
 http://www.oracle.com/technetwork/articles/javase/index-jsp-138363.html
 
 http://maven.apache.org/download.cgi
 
-Build the Java app
-------------------
+### Build the Java app
+
 ```cd helloworld-java-app```
 
 ```mvn clean install```
 
-Getting started
-----------------
+### Getting started
+
 http://www.ansibleworks.com/docs/intro_getting_started.html
 
-Ansible Modules
-----------------
+### Ansible Modules
+
 http://www.ansibleworks.com/docs/modules.html
 
 # About
