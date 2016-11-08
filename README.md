@@ -24,7 +24,7 @@ Then, if you're going to update ansible later, just do:
 
 #### Other:
 
-http://www.ansibleworks.com/docs/intro_installation.html
+http://docs.ansible.com/ansible/intro_installation.html#installing-the-control-machine
 
 ### Install VirtualBox and Extension Pack
 
