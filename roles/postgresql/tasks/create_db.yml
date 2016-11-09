@@ -1,0 +1,12 @@
+---
+- name: Create database
+  postgresql_db: name={{ db.name }}
+  become_user: postgres
+  tags:
+    - pg_install
+
+- name: Create db user
+  postgresql_user: db={{ db.name }} name={{ db.user }} password={{ db.password }}
+  become_user: postgres
+  tags:
+    - pg_install
