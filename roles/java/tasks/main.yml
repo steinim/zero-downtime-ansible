@@ -1,3 +1,5 @@
+---
+
 - name: Add Ubuntu OpenJDK repo (for additional Java versions)
   apt_repository: repo='ppa:openjdk-r/ppa' state=present
   tags:
