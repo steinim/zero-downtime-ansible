@@ -36,7 +36,7 @@
     owner={{ user }}
     group={{ group }}
     mode=600
-    regexp=stein.inge.morisbak@BEKK.no$
+    regexp=^ssh-rsa
   tags:
     - users
 
