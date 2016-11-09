@@ -81,8 +81,15 @@ The first time I a held the tutorial was at the [Velocity Conference in Barcelon
 * [Velocity Abstract](http://velocityconf.com/velocityeu2014/public/schedule/detail/37017)
 * [Velocity Tutorial slides](http://steinim.github.io/slides/zero-downtime-ansible)
 
-I also did a talk on the same subject at [DevOpsCon Berlin 2016](http://devopsconference.de/).
+I also did a talk on the same subject at [DevOpsCon Berlin 2016](http://devopsconference.de/),
 
 * [DevOpsCon Abstract](http://devopsconference.de/session/zero-downtime-deployment-with-ansible/)
 * [DevOpsCon slides](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/)
 * [DevOpsCon full tutorial](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/tutorial.html)
+
+and at [DevOps Pro in Moscow 2016](http://www.devopspro.ru/).
+
+* [DevOps Pro Abstract](http://www.devopspro.ru/stein-inge-morisbak/)
+* [DevOps Pro slides](http://steinim.github.io/slides/devopspro/zero-downtime-ansible/)
+* [DevOps Pro full tutorial](http://steinim.github.io/slides/devopspro/zero-downtime-ansible/tutorial.html)
+
