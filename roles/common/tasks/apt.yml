@@ -1,9 +1,4 @@
 ---
-- name: Update apt cache
-  apt: update_cache=yes cache_valid_time=5400
-  tags:
-    - apt
-
 - name: Ensure installed vim
   apt:
     pkg=vim
