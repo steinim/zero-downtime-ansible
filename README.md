@@ -68,11 +68,11 @@ http://maven.apache.org/download.cgi
 
 ### Getting started
 
-http://www.ansibleworks.com/docs/intro_getting_started.html
+http://docs.ansible.com/ansible/intro_getting_started.html
 
 ### Ansible Modules
 
-http://www.ansibleworks.com/docs/modules.html
+http://docs.ansible.com/ansible/list_of_all_modules.html
 
 # About
 
