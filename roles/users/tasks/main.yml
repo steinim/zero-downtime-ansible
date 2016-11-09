@@ -36,7 +36,7 @@
     owner=<insert user variable here>
     group=<insert group variable here>
     mode=600
-    regexp=stein.inge.morisbak@BEKK.no$ # substitute with the end of your personal public key>
+    regexp=^ssh-rsa
   tags:
     - users
 
