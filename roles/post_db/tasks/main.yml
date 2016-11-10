@@ -1,26 +1,26 @@
 ---
 - name: Copy db migration script
   copy: src=migrate_db.sql dest=/tmp/migrate_db.sql
-  sudo_user: postgres
+  become_user: postgres
   tags:
     - deploy
     - post_deploy
 
 - name: Run db migration script
   command: psql -d {{ db.name }} -q -f /tmp/migrate_db.sql
-  sudo_user: postgres
+  become_user: postgres
   tags:
     - deploy
     - post_deploy
 
 - name: Copy db rollback script
   copy: src=rollback_db.sql dest=/tmp/rollback_db.sql
-  sudo_user: postgres
+  become_user: postgres
   tags:
     - rollback
 
 - name: Run db rollback script
   command: psql -d {{ db.name }} -q -f /tmp/rollback_db.sql
-  sudo_user: postgres
+  become_user: postgres
   tags:
     - rollback

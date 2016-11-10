@@ -8,6 +8,7 @@
     mode=0640
   tags:
     - deploy
+    - rollback
 
 #- name: Download jar
 #  get_url:
@@ -30,16 +31,35 @@
   tags:
     - deploy
 
-- name: get previous app release version
+- name: get current app release version
   command: readlink /home/{{ user }}/current
-  register: previous_deploy_stamp
+  register: current_deploy_stamp
   ignore_errors: yes
   tags:
     - deploy
 
-- name: Link to previous app releases
+- name: get previous app release version
+  command: readlink /home/{{ user }}/previous
+  register: previous_deploy_stamp
+  ignore_errors: yes
+  tags:
+    - rollback
+
+- name: Set current app to previous
   file:
     dest="/home/{{ user }}/previous"
+    src="{{ current_deploy_stamp.stdout }}"
+    owner={{ user }}
+    group={{ group }}
+    state=link
+    force=yes
+  when: current_deploy_stamp.rc == 0
+  tags:
+    - deploy
+
+- name: Set previous app to current
+  file:
+    dest="/home/{{ user }}/current"
     src="{{ previous_deploy_stamp.stdout }}"
     owner={{ user }}
     group={{ group }}
@@ -47,7 +67,7 @@
     force=yes
   when: previous_deploy_stamp.rc == 0
   tags:
-    - deploy
+    - rollback
 
 - name: Link to current app releases
   file:
@@ -78,12 +98,14 @@
     sleep=3
   tags:
     - deploy
+    - rollback
 
 - name: Wait until app is available
   local_action: wait_for port={{ http_port }} host={{ inventory_hostname }} delay=5
   become: False
   tags:
     - deploy
+    - rollback
     - status
 
 - name: Remove old deploys (keeping the two latest)

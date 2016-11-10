@@ -10,4 +10,7 @@ postgresql:
 db:
   name: devops
   user: devops
+  schema: devops
   password: devops123
+  table_name: MESSAGES
+  rollback_table_name: HELLO
