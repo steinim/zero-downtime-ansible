@@ -1,6 +1,6 @@
 ---
 - name: Install Postgresql and dependencies
-  apt: pkg={{ item }} state=installed update_cache=yes
+  apt: pkg={{ item }} state=installed
   with_items:
     - postgresql-{{ postgresql.version }}
     - python-psycopg2
