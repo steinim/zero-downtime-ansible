@@ -1,4 +1,11 @@
 ---
+- name: Run "update_cache=yes" if the last one is more than 24 hours ago
+  apt:
+    update_cache=yes
+    cache_valid_time=86400
+  tags:
+    - always
+
 - name: Ensure installed vim
   apt:
     pkg=vim
