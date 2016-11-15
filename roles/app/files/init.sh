@@ -21,15 +21,11 @@ _start() {
   printf "%-50s" "Starting $NAME..."
   cd $APP_HOME
   if [ ! -d "$LOGS" ]; then
-    mkdir $LOGS
+    su $NAME -c "mkdir $LOGS"
   fi
-  PID=`nohup java -jar $APP_JAR 1>$STDOUT 2>$STDERR & echo $!`
-  if [ -z $PID ]; then
-    printf "%s\n" "Fail"
-  else
-    echo $PID > $PIDFILE
-    printf "%s\n" "Ok"
-  fi
+  touch $PIDFILE
+  chown $NAME:$NAME $PIDFILE
+  su $NAME -c "nohup java -jar $APP_JAR 1>$STDOUT 2>$STDERR & echo \$! > '$PIDFILE'"
 }
 
 _stop() {
