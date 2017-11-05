@@ -7,8 +7,8 @@
 
 - name: Install java jre
   apt:
-    pkg=openjdk-8-jre
-    state=present
-    update_cache=no
+    pkg: openjdk-8-jre
+    state: present
+    update_cache: no
   tags:
     - java
