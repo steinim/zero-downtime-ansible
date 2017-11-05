@@ -1,6 +1,7 @@
 package no.bekk.jetty;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map.Entry;
@@ -16,8 +17,7 @@ import com.sun.jersey.spi.container.servlet.ServletContainer;
 
 public class WebServerMain {
 
-	private static final Logger LOG = LoggerFactory
-			.getLogger(WebServerMain.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WebServerMain.class);
 
 	private static final int SERVER_PORT = 1234;
 
@@ -53,8 +53,10 @@ public class WebServerMain {
 			for (Entry<Object, Object> e : props.entrySet()) {
 				System.setProperty(e.getKey().toString(), e.getValue().toString());
 			}
-		} catch (IOException ex) {
-			ex.printStackTrace();
+		} catch (FileNotFoundException e) {
+			LOG.error(e.getMessage());
+		} catch (IOException e) {
+			e.printStackTrace();
 		} finally {
 			if (input != null) {
 				try {
