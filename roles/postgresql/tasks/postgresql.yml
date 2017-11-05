@@ -1,33 +1,39 @@
 ---
 - name: Install Postgresql and dependencies
-  apt: pkg={{ item }} state=installed
+  apt:
+    pkg: "{{ item }}"
+    state: installed
   with_items:
-    - postgresql-{{ postgresql.version }}
+    - "postgresql-{{ postgresql.version }}"
     - python-psycopg2
   tags:
     - pg_install
 
 - name: Install postgresql.conf
-  copy: src=postgresql.conf
-        dest=/etc/postgresql/{{ postgresql.version }}/main/postgresql.conf
-        owner={{ postgresql.user }}
-        group={{ postgresql.group }}
+  copy:
+    src: postgresql.conf
+    dest: "/etc/postgresql/{{ postgresql.version }}/main/postgresql.conf"
+    owner: "{{ postgresql.user }}"
+    group: "{{ postgresql.group }}"
   notify:
     - Restart postgresql
   tags:
     - pg_install
 
 - name: Install pg_hba.conf
-  template: src=pg_hba.conf.j2
-            dest=/etc/postgresql/{{ postgresql.version }}/main/pg_hba.conf
-            owner={{ postgresql.user }}
-            group={{ postgresql.group }}
+  template:
+    src: pg_hba.conf.j2
+    dest: "/etc/postgresql/{{ postgresql.version }}/main/pg_hba.conf"
+    owner: "{{ postgresql.user }}"
+    group: "{{ postgresql.group }}"
   notify:
     - Restart postgresql
   tags:
     - pg_install
 
 - name: Ensure that postgresql is started
-  service: name=postgresql state=started
+  service:
+    name: postgresql
+    state: started
   tags:
     - pg_install
