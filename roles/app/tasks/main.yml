@@ -8,6 +8,15 @@
     mode: 0640
   tags:
     - deploy
+
+- name: Copy rollback config.properties
+  template:
+    src: rollback.properties.j2
+    dest: "/home/{{ user }}/config.properties"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0640
+  tags:
     - rollback
 
 #- name: Download jar

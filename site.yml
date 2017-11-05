@@ -16,6 +16,11 @@
     - users
     - app
 
+- hosts: dbservers
+  gather_facts: False
+  roles:
+    - post_db
+
 - hosts: proxies
   gather_facts: False
   vars:
