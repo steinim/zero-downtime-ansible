@@ -93,3 +93,7 @@ and at [DevOps Pro in Moscow 2016](http://www.devopspro.ru/).
 * [DevOps Pro slides](http://steinim.github.io/slides/devopspro/zero-downtime-ansible/)
 * [DevOps Pro full tutorial](http://steinim.github.io/slides/devopspro/zero-downtime-ansible/tutorial.html)
 
+and at [DevOpsCon in Munich 2017](https://devopsconference.de).
+
+* [DevOpsCon Abstract](https://devopsconference.de/continuous-delivery/zero-downtime-deployment-with-ansible/)
+* [DevOpsCon Tutorial](http://steinim.github.io/slides/devopscon-munich/zero-downtime-ansible/)
