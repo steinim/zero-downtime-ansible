@@ -4,11 +4,3 @@ group: devops
 user_name: "Devops app user"
 
 deploy_stamp: "{{ ansible_date_time['epoch'] }}"
-
-db:
-  name: devops
-  user: devops
-  schema: devops
-  password: devops123
-  table_name: MESSAGES
-  rollback_table_name: HELLO
