@@ -1,4 +1,4 @@
 ---
-- include: repository.yml
-- include: postgresql.yml
-- include: create_db.yml
+- import_tasks: repository.yml
+- import_tasks: postgresql.yml
+- import_tasks: create_db.yml
