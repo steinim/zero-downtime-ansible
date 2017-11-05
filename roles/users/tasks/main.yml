@@ -1,16 +1,18 @@
 ---
 - name: Create group
-  group: name: <insert group variable here> state: present
+  group:
+    name: "<insert group variable here>"
+    state: present
   tags:
     - users
 
 - name: Create user
   user:
-    name: <insert user variable here>
+    name: "<insert user variable here>"
     comment: "<insert user_name variable here>"
-    group: <insert group variable here>
+    group: "<insert group variable here>"
     createhome: yes
-    home: /home/<insert user variable here>
+    home: "/home/<insert user variable here>"
     shell: /bin/bash
     state: present
   tags:
@@ -18,9 +20,9 @@
 
 - name: Ensure ssh directory exists for user
   file:
-    dest: /home/<insert user variable here>/.ssh
-    owner: <insert user variable here>
-    group: <insert group variable here>
+    dest: "/home/<insert user variable here>/.ssh"
+    owner: "<insert user variable here>"
+    group: "<insert group variable here>"
     state: directory
     mode: 0700
   tags:
@@ -28,13 +30,13 @@
 
 - name: Ensure public key is in authorized_keys
   lineinfile:
-    dest: /home/<insert user variable here>/.ssh/authorized_keys
+    dest: "/home/<insert user variable here>/.ssh/authorized_keys"
     state: present
     line: "{{ lookup('file','~/.ssh/id_rsa.pub') }}"
     insertafter: EOF
     create: yes
-    owner: <insert user variable here>
-    group: <insert group variable here>
+    owner: "<insert user variable here>"
+    group: "<insert group variable here>"
     mode: 600
     regexp: ^ssh-rsa
   tags:
