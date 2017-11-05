@@ -1,5 +1,17 @@
 ---
-- hosts: appservers
+- hosts: dbservers
+  gather_facts: False
   roles:
+    - common
+
+- hosts: appservers
+  gather_facts: False
+  roles:
+    - common
     - java
+
+- hosts: proxies
+  gather_facts: False
+  roles:
+    - common
 
