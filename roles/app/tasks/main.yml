@@ -1,37 +1,37 @@
 ---
 - name: Copy config.properties
   template:
-    src=config.properties.j2
-    dest=/home/{{ user }}/config.properties
-    owner={{ user }}
-    group={{ group }}
-    mode=0640
+    src: config.properties.j2
+    dest: "/home/{{ user }}/config.properties"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0640
   tags:
     - deploy
 
 #- name: Download jar
 #  get_url:
-#    url="http://morisbak.net/files/devops.jar"
-#    dest="/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
-#    owner={{ user }}
-#    group={{ group }}
-#    mode=0644
+#    url: "https://morisbak.net/files/devops.jar"
+#    dest: "/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
+#    owner: "{{ user }}"
+#    group: "{{ group }}"
+#    mode: 0644
 #  tags:
 #    - deploy
 
 
 - name: Copy app jar
   copy:
-    src=../../../helloworld-java-app/target/helloworld-java-app-1.0-SNAPSHOT-jar-with-dependencies.jar
-    dest=/home/{{ user }}/devops_{{ deploy_stamp }}.jar
-    owner={{ user }}
-    group={{ group }}
-    mode=0644
+    src: ../../../helloworld-java-app/target/helloworld-java-app-1.0-SNAPSHOT-jar-with-dependencies.jar
+    dest: "/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0644
   tags:
     - deploy
 
 - name: get previous app release version
-  command: readlink /home/{{ user }}/current
+  command: "readlink /home/{{ user }}/current"
   register: previous_deploy_stamp
   ignore_errors: yes
   tags:
@@ -39,48 +39,52 @@
 
 - name: Link to previous app releases
   file:
-    dest="/home/{{ user }}/previous"
-    src="{{ previous_deploy_stamp.stdout }}"
-    owner={{ user }}
-    group={{ group }}
-    state=link
-    force=yes
+    dest: "/home/{{ user }}/previous"
+    src: "{{ previous_deploy_stamp.stdout }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    state: link
+    force: yes
   when: previous_deploy_stamp.rc == 0
   tags:
     - deploy
 
 - name: Link to current app releases
   file:
-    dest="/home/{{ user }}/current"
-    src="/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
-    owner={{ user }}
-    group={{ group }}
-    state=link
-    force=yes
+    dest: "/home/{{ user }}/current"
+    src: "/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    state: link
+    force: yes
   tags:
     - deploy
 
 - name: Copy init script to server
   copy:
-    src=init.sh
-    dest=/etc/init.d/devops
-    owner={{ user }}
-    group={{ group }}
-    mode=0755
+    src: init.sh
+    dest: /etc/init.d/devops
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0755
   tags:
     - deploy
 
 - name: Enable and restart app service
   service:
-    name=devops
-    enabled=yes
-    state=restarted
-    sleep=3
+    name: devops
+    enabled: yes
+    state: restarted
+    sleep: 3
   tags:
     - deploy
 
 - name: Wait until app is available
-  local_action: wait_for port={{ http_port }} host={{ inventory_hostname }} delay=5
+  wait_for:
+    port: "{{ http_port }}"
+    host: "{{ inventory_hostname }}"
+    delay: 5
+  connection: local
   become: False
   tags:
     - deploy
