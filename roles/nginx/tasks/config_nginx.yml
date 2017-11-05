@@ -1,10 +1,10 @@
 ---
 - name: Create config for nginx
   template:
-    src=devops.conf.j2
-    dest=/etc/nginx/conf.d/devops.conf
-    owner=root
-    mode=0644
+    src: devops.conf.j2
+    dest: /etc/nginx/conf.d/devops.conf
+    owner: root
+    mode: 0644
   notify:
     - Reload nginx
   tags:
@@ -13,8 +13,8 @@
 
 - name: Remove default config
   file:
-    path=/etc/nginx/sites-available/default
-    state=absent
+    path: /etc/nginx/sites-available/default
+    state: absent
   notify:
     - Reload nginx
   tags:

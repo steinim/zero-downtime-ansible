@@ -1,6 +1,8 @@
 ---
 - name: Copy db migration script
-  copy: src=migrate_db.sql dest=/tmp/migrate_db.sql
+  copy:
+    src: migrate_db.sql
+    dest: /tmp/migrate_db.sql
   become_user: postgres
   tags:
     - deploy

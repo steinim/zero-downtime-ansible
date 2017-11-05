@@ -1,10 +1,15 @@
 ---
 - name: Ensure installed nginx
-  apt: pkg=nginx state=present update_cache=yes
+  apt:
+    pkg: nginx
+    state: present
+    update_cache: yes
   tags:
     - nginx
 
 - name: Start nginx
-  service: name=nginx state=started
+  service:
+    name: nginx
+    state: started
   tags:
     - nginx
