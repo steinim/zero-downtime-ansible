@@ -37,7 +37,7 @@
     create: yes
     owner: "{{ user }}"
     group: "{{ group }}"
-    mode: 600
+    mode: 0600
     regexp: ^ssh-rsa
   tags:
     - users
