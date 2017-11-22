@@ -37,7 +37,7 @@
     create: yes
     owner: "<insert user variable here>"
     group: "<insert group variable here>"
-    mode: 600
+    mode: 0600
     regexp: ^ssh-rsa
   tags:
     - users
