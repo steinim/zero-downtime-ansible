@@ -1,4 +1,4 @@
-Host db
+Host db db.local
   HostName 127.0.0.1
   User vagrant
   Port 2222
@@ -9,7 +9,7 @@ Host db
   IdentitiesOnly yes
   LogLevel FATAL
 
-Host app1
+Host app1 app1.local
   HostName 127.0.0.1
   User vagrant
   Port 2200
@@ -20,7 +20,7 @@ Host app1
   IdentitiesOnly yes
   LogLevel FATAL
 
-Host app2
+Host app2 app2.local
   HostName 127.0.0.1
   User vagrant
   Port 2202
@@ -31,7 +31,7 @@ Host app2
   IdentitiesOnly yes
   LogLevel FATAL
 
-Host proxy
+Host proxy proxy.local
   HostName 127.0.0.1
   User vagrant
   Port 2203

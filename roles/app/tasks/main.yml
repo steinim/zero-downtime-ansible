@@ -1,4 +1,9 @@
 ---
+
+- name: Set deploy_stamp
+  set_fact:
+    deploy_stamp: "{{ lookup('pipe','date +%Y%m%d%H%M%S') }}"
+
 - name: Copy config.properties
   template:
     src: config.properties.j2
@@ -19,26 +24,26 @@
   tags:
     - rollback
 
-#- name: Download jar
-#  get_url:
-#    url: "https://morisbak.net/files/devops.jar"
+- name: Download jar
+  get_url:
+    url: "https://morisbak.net/files/devops.jar"
+    dest: "/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0644
+    validate_certs: False
+  tags:
+    - deploy
+
+#- name: Copy app jar
+#  copy:
+#    src: ../../../helloworld-java-app/target/helloworld-java-app-1.0-SNAPSHOT-jar-with-dependencies.jar
 #    dest: "/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
 #    owner: "{{ user }}"
 #    group: "{{ group }}"
 #    mode: 0644
 #  tags:
 #    - deploy
-
-
-- name: Copy app jar
-  copy:
-    src: ../../../helloworld-java-app/target/helloworld-java-app-1.0-SNAPSHOT-jar-with-dependencies.jar
-    dest: "/home/{{ user }}/devops_{{ deploy_stamp }}.jar"
-    owner: "{{ user }}"
-    group: "{{ group }}"
-    mode: 0644
-  tags:
-    - deploy
 
 - name: get current app release version
   command: "readlink /home/{{ user }}/current"
