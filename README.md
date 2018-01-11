@@ -84,16 +84,21 @@ The first time I a held the tutorial was at the [Velocity Conference in Barcelon
 I also did a talk on the same subject at [DevOpsCon Berlin 2016](http://devopsconference.de/),
 
 * [DevOpsCon Abstract](http://devopsconference.de/session/zero-downtime-deployment-with-ansible/)
-* [DevOpsCon slides](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/)
-* [DevOpsCon full tutorial](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/tutorial.html)
+* [DevOpsCon Slides](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/)
+* [DevOpsCon Full tutorial](http://steinim.github.io/slides/devopscon/zero-downtime-ansible/tutorial.html)
 
 and at [DevOps Pro in Moscow 2016](http://www.devopspro.ru/).
 
 * [DevOps Pro Abstract](http://www.devopspro.ru/stein-inge-morisbak/)
-* [DevOps Pro slides](http://steinim.github.io/slides/devopspro/zero-downtime-ansible/)
-* [DevOps Pro full tutorial](http://steinim.github.io/slides/devopspro/zero-downtime-ansible/tutorial.html)
+* [DevOps Pro Slides](http://steinim.github.io/slides/devopspro/zero-downtime-ansible/)
+* [DevOps Pro Full tutorial](http://steinim.github.io/slides/devopspro/zero-downtime-ansible/tutorial.html)
 
 and at [DevOpsCon in Munich 2017](https://devopsconference.de).
 
 * [DevOpsCon Abstract](https://devopsconference.de/continuous-delivery/zero-downtime-deployment-with-ansible/)
 * [DevOpsCon Tutorial](http://steinim.github.io/slides/devopscon-munich/zero-downtime-ansible/)
+
+and at [FOSDEM in Brussels 2018](https://fosdem.org/2018/)
+
+* [FOSDEM Abstract](https://fosdem.org/2018/schedule/event/zero_downtime_deployments_ansible/)
+* [FOSDEM Slides](http://steinim.github.io/slides/fosdem/zero-downtime-ansible/)
